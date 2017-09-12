@@ -22,6 +22,23 @@ PhxRPC[![Build Status](https://travis-ci.org/Tencent/phxrpc.png)](https://travis
 # 局限
   - 不支持多进程模式。
   
+# 如何编译
+#### 编译环境
+  - Linux.
+  - GCC-4.8及以上版本。
+  - boost 1.56及以上版本.（可选）
+  - sudo apt install libprotobuf-dev protobuf-compiler
+
+#### Protobuf准备
+PhxRPC必须依赖的第三方库只有Protobuf。在编译前，复制protobuf源码中[compiler/\*.h]到[/usr/include/google/protobuf/compiler/*，或者通过软链的形式。
+
+#### boost优化
+PhxRPC在ServerIO以及Client并发连接管理上使用了ucontext，而boost的ucontext实现要比system默认的更为高效，推荐使用boost。如果需要使用boost的话需要在third_party目录放置好boost目录，或者通过软链的形式。
+
+#### 编译安装方法
+进入PhxRPC根目录。
+    make (默认是-O2编译，如需编译debug版，执行 make debug=y)
+    make boost (可选，编译PhxRPC的boost优化插件，编译之前先准备好boost库)  
 # 性能
 >使用Sample目录下的Search RPC C/S进行Echo RPC调用的压测，相当于Worker空转情况。
 
@@ -49,24 +66,6 @@ PhxRPC[![Build Status](https://travis-ci.org/Tencent/phxrpc.png)](https://travis
 | system  | 55k | 160k   | 360k | 500k |
 | boost | 62k | 175k | 410k | 500k |
 
-# 如何编译
-#### Protobuf准备
-PhxRPC必须依赖的第三方库只有Protobuf。在编译前，复制protobuf源码中[compiler/\*.h]到[/usr/include/google/protobuf/compiler/*，或者通过软链的形式。
-
-#### boost优化
-PhxRPC在ServerIO以及Client并发连接管理上使用了ucontext，而boost的ucontext实现要比system默认的更为高效，推荐使用boost。如果需要使用boost的话需要在third_party目录放置好boost目录，或者通过软链的形式。
-
-#### 编译环境
-  - Linux.
-  - GCC-4.8及以上版本。
-  - boost 1.56及以上版本.（可选）
-
-#### 编译安装方法
-进入PhxRPC根目录。
-
-    make (默认是-O2编译，如需编译debug版，执行 make debug=y)
-    make boost (可选，编译PhxRPC的boost优化插件，编译之前先准备好boost库)  
- 
 # 如何使用
 #### 编写proto文件
 下面是sample目录下的proto文件样例。
