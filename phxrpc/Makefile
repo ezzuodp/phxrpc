@@ -32,7 +32,7 @@ libphxrpc.a: $(LIB_OBJS)
 rpc/phxrpc.pb.cc: rpc/phxrpc.pb.h
 
 rpc/phxrpc.pb.h: rpc/phxrpc.proto
-	cd ..; $(PROTOBUF_ROOT)/bin/protoc -I$(PROTOBUF_ROOT)/src -I. --cpp_out=. phxrpc/$<;
+	cd ..; protoc -I$(PROTOBUF_ROOT)/include -I. --cpp_out=. phxrpc/$<;
 
 clean:
 	@( $(RM) $(TARGETS) $(TEST_TARGETS) )

@@ -51,7 +51,7 @@ PhxRPC[![Build Status](https://travis-ci.org/Tencent/phxrpc.png)](https://travis
 
 # 如何编译
 #### Protobuf准备
-PhxRPC必须依赖的第三方库只有Protobuf。在编译前，在third_party目录放置好protobuf目录，或者通过软链的形式。
+PhxRPC必须依赖的第三方库只有Protobuf。在编译前，复制protobuf源码中[compiler/\*.h]到[/usr/include/google/protobuf/compiler/*，或者通过软链的形式。
 
 #### boost优化
 PhxRPC在ServerIO以及Client并发连接管理上使用了ucontext，而boost的ucontext实现要比system默认的更为高效，推荐使用boost。如果需要使用boost的话需要在third_party目录放置好boost目录，或者通过软链的形式。
