@@ -26,6 +26,7 @@ See the AUTHORS file for names of contributors.
 #include <assert.h>
 #include <boost/context/all.hpp>
 #include "phxrpc/network.h"
+#include "uthread_boost2.h"
 
 namespace phxrpc {
 
@@ -48,16 +49,13 @@ public:
     bool Resume() override;
     bool Yield() override;
 
-    boost::context::fcontext_t & GetMainContext();
-
 private:
-    static void UThreadFuncWrapper(intptr_t ptr);
+    static void UThreadFuncWrapper(void* ptr);
 
-    boost::context::fcontext_t context_;
     UThreadFunc_t func_;
     void * args_;
-    UThreadStackMemory stack_;
     UThreadDoneCallback_t callback_;
+    pfx_ucthread pfucthread_;
 };
 
 } //namespace phxrpc

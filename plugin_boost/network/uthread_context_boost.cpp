@@ -37,7 +37,7 @@ UThreadContextBoostInit :: UThreadContextBoostInit() {
 
 UThreadContextBoost :: UThreadContextBoost(size_t stack_size, UThreadFunc_t func, 
         void * args, UThreadDoneCallback_t callback, const bool need_stack_protect)
-    : func_(func), args_(args), stack_(stack_size, need_stack_protect), callback_(callback) {
+    : func_(func), args_(args), callback_(callback), pfucthread_() {
     Make(func, args);
 }
 
@@ -53,26 +53,20 @@ UThreadContext * UThreadContextBoost:: DoCreate(size_t stack_size,
 void UThreadContextBoost :: Make(UThreadFunc_t func, void * args) {
     func_ = func;
     args_ = args;
-    void * stack_p = (void *)((char *)stack_.top() + stack_.size());
-    context_ = boost::context::make_fcontext(stack_p, stack_.size(), &UThreadFuncWrapper);
+    pfucthread_.run(&UThreadContextBoost::UThreadFuncWrapper, reinterpret_cast<void *>(this));
 }
 
 bool UThreadContextBoost :: Resume() {
-    boost::context::jump_fcontext(&GetMainContext(), context_, reinterpret_cast<intptr_t>(this));
+    pfucthread_.resume();
     return true;
 }
 
 bool UThreadContextBoost :: Yield() {
-    boost::context::jump_fcontext(&context_, GetMainContext(), 0);
+    pfucthread_.yield();
     return true;
 }
 
-boost::context::fcontext_t & UThreadContextBoost :: GetMainContext() {
-    static thread_local boost::context::fcontext_t main_context;
-    return main_context;
-}
-
-void UThreadContextBoost :: UThreadFuncWrapper(intptr_t ptr) {
+void UThreadContextBoost :: UThreadFuncWrapper(void* ptr) {
     UThreadContextBoost * uc = reinterpret_cast<UThreadContextBoost *>(ptr);
     uc->func_(uc->args_);
     if (uc->callback_ != nullptr) {
