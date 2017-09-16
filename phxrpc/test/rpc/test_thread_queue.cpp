@@ -23,7 +23,7 @@ See the AUTHORS file for names of contributors.
 #include <vector>
 #include <stdio.h>
 #include <unistd.h>
-#include "thread_queue.h"
+#include "phxrpc/rpc.h"
 
 using namespace std;
 using namespace phxrpc;

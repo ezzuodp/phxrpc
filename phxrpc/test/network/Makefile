@@ -1,4 +1,4 @@
-include ../../phxrpc.mk
+include ../../../phxrpc.mk
 
 TEST_TARGETS = test_echo_client test_echo_server \
 			   test_epoll_server test_epoll_client \

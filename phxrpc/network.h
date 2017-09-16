@@ -25,6 +25,7 @@ See the AUTHORS file for names of contributors.
 #include "network/socket_stream_block.h"
 #include "network/socket_stream_uthread.h"
 #include "network/uthread_context_base.h"
+#include "network/uthread_context_system.h"
 #include "network/uthread_context_util.h"
 #include "network/uthread_epoll.h"
 #include "network/timer.h"

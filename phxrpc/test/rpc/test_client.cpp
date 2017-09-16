@@ -23,11 +23,9 @@ See the AUTHORS file for names of contributors.
 #include <syslog.h>
 #include <google/protobuf/message_lite.h>
 
-#include "monitor_factory.h"
-#include "http_caller.h"
-
 #include "phxrpc/network.h"
 #include "phxrpc/http.h"
+#include "phxrpc/rpc.h"
 
 using namespace phxrpc;
 

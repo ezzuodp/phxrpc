@@ -19,11 +19,10 @@ permissions and limitations under the License.
 See the AUTHORS file for names of contributors.
 */
 
-#include "timer.h"
 #include <map>
 #include <math.h>
 #include <algorithm>
-#include "uthread_epoll.h"
+#include "phxrpc/network.h"
 
 using namespace std;
 using namespace phxrpc;

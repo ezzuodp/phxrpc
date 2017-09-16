@@ -1,5 +1,5 @@
 
-include ../../phxrpc.mk
+include ../../../phxrpc.mk
 
 TEST_TARGETS = test_thread_queue test_hsha_server test_client \
 

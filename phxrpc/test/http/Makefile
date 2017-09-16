@@ -1,5 +1,5 @@
 
-include ../../phxrpc.mk
+include ../../../phxrpc.mk
 
 TEST_TARGETS = test_http_client
 

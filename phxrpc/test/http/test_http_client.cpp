@@ -27,8 +27,8 @@ See the AUTHORS file for names of contributors.
 #include <assert.h>
 #include <string.h>
 
-#include "http_msg.h"
-#include "http_client.h"
+#include "phxrpc/http/http_msg.h"
+#include "phxrpc/http/http_client.h"
 
 #include "phxrpc/file/file_utils.h"
 #include "phxrpc/file/opt_map.h"

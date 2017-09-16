@@ -32,7 +32,7 @@ See the AUTHORS file for names of contributors.
 #include <fcntl.h>
 #include <errno.h>
 
-#include "socket_stream_block.h"
+#include "phxrpc/network.h"
 
 void test() {
     int listenfd = -1;

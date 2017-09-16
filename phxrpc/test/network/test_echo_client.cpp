@@ -25,7 +25,7 @@ See the AUTHORS file for names of contributors.
 #include <errno.h>
 #include <string.h>
 
-#include "socket_stream_block.h"
+#include "phxrpc/network.h"
 
 void test(int times) {
     int step = (times < 20 ? 20 : times) / 20;

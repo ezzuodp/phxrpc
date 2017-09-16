@@ -19,8 +19,7 @@ permissions and limitations under the License.
 See the AUTHORS file for names of contributors.
 */
 
-#include "socket_stream_block.h"
-#include "uthread_epoll.h"
+#include "phxrpc/network.h"
 
 #include <string.h>
 #include <assert.h>
