@@ -55,7 +55,8 @@ private:
     UThreadFunc_t func_;
     void * args_;
     UThreadDoneCallback_t callback_;
-    pfx_ucthread pfucthread_;
+    
+    default_boost_uthread pfucthread_;
 };
 
 } //namespace phxrpc
