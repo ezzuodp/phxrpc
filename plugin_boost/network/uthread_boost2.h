@@ -2,9 +2,9 @@
 #include <functional>
 
 namespace phxrpc {
-  
-
-
+/**
+ * 使用 boost 新版本实现的
+ */
 template <typename Alloc> 
 class boost_uthread {
 public:
