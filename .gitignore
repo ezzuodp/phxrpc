@@ -15,3 +15,4 @@ codegen/phxrpc_pb2service
 codegen/phxrpc_pb2tool
 codegen/test*
 .vscode/*
+build/*
