@@ -19,7 +19,7 @@ ifeq ($(OS),Darwin)
 	LIB_NETWORK_OBJS += ../plugin_darwin/network/epoll-darwin.o
 endif
 
-LIB_OBJS = $(LIB_RPC_OBJS) $(LIB_HTTP_OBJS) $(LIB_NETWORK_OBJS) $(LIB_FILE_OBJS) \
+LIB_OBJS = $(LIB_RPC_OBJS) $(LIB_HTTP_OBJS) $(LIB_NETWORK_OBJS) $(LIB_FILE_OBJS)
 
 TARGETS = libphxrpc.a
 

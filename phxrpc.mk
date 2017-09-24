@@ -24,8 +24,7 @@ else
 	OPT = -O2
 endif
 
-C = gcc
-CC = g++
+CXX = g++
 AR = ar cru
 
 SOFLAGS = -shared -Wl,-h,$@
@@ -33,9 +32,9 @@ LINKER = $(CC)
 LINT = lint -c
 RM = /bin/rm -f
 
-CFLAGS = -std=c++11 -Wall -D_REENTRANT -D_GNU_SOURCE -D_XOPEN_SOURCE -fPIC -m64 $(OPT) \
+CXXFLAGS = -std=c++11 -Wall -D_REENTRANT -D_GNU_SOURCE -D_XOPEN_SOURCE -fPIC -m64 $(OPT) \
 		 -I$(PROTOBUF_ROOT)/include \
-		 -I$(PHXRPC_ROOT) \
+		 -I$(PHXRPC_ROOT)
 
 LDFLAGS = -L$(PROTOBUF_ROOT)/lib/ $(PROTOBUF_ROOT)/lib//x86_64-linux-gnu/libprotobuf.a \
 		  -lstdc++ -lpthread -lm
@@ -45,11 +44,8 @@ PBFLAGS = -I $(PROTOBUF_ROOT)/include -I $(PHXRPC_ROOT)
 #--------------------------------------------------------------------
 
 # make rule
-%.o : %.c
-	$(C) $(CFLAGS) -c $< -o $@	
-
 %.o : %.cc
-	$(CC) $(CFLAGS) -c $< -o $@	
+	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 %.o : %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@	
+	$(CXX) $(CXXFLAGS) -c $< -o $@

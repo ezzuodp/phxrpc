@@ -84,7 +84,7 @@ int main(int argc, char * argv[]) {
     request.SetMethod(method);
     request.SetVersion("HTTP/1.1");
     request.AddHeader("Connection", "Keep-Alive");
-    request.AddHeader("Host", "127.0.0.1");
+    request.AddHeader("Host", host);
 
     if (0 == strcasecmp(method, "POST")) {
         if (!FileUtils::ReadFile(file, &(request.GetContent()))) {
@@ -113,7 +113,7 @@ int main(int argc, char * argv[]) {
         printf("unsupport method %s\n", request.GetMethod());
     }
 
-    if (socket_ret) {
+    if ( socket_ret== 0) {
         printf("response:\n");
 
         printf("%s %d %s\n", response.GetVersion(), response.GetStatusCode(), response.GetReasonPhrase());
@@ -127,7 +127,7 @@ int main(int argc, char * argv[]) {
 
         printf("%zu bytes body\n", response.GetContent().size());
         if (response.GetContent().size() > 0) {
-            //printf( "%s\n", (char*)response.getContent() );
+            printf( "%s\n", response.GetContent().c_str() );
         }
     } else {
         printf("http request fail\n");
