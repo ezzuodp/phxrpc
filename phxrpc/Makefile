@@ -25,7 +25,8 @@ ifeq ($(OS),Darwin)
 	LIB_NETWORK_OBJS += ../plugin_darwin/network/epoll-darwin.o
 endif
 
-LIB_OBJS = $(LIB_RPC_OBJS) $(LIB_HTTP_OBJS) $(LIB_NETWORK_OBJS) $(LIB_FILE_OBJS)
+LIB_OBJS = $(LIB_RPC_OBJS) $(LIB_MSG_OBJS) $(LIB_HTTP_OBJS) $(LIB_MQTT_OBJS) \
+		$(LIB_NETWORK_OBJS) $(LIB_FILE_OBJS)
 
 TARGETS = libphxrpc.a
 

@@ -12,7 +12,6 @@
 third_party/*
 sbin/*
 sample/*
-<<<<<<< HEAD
 codegen/phxrpc_pb2client
 codegen/phxrpc_pb2server
 codegen/phxrpc_pb2service
@@ -20,6 +19,4 @@ codegen/phxrpc_pb2tool
 codegen/test*
 .vscode/*
 build/*
-=======
 
->>>>>>> tenms
