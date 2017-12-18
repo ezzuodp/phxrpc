@@ -2,6 +2,9 @@
 *.a
 *.pb.*
 *_dispatcher.*
+!base_dispatcher.*
+!http_dispatcher.*
+!mqtt_dispatcher.*
 *_stub.*
 *_service.*
 *_tool.*
@@ -9,6 +12,7 @@
 third_party/*
 sbin/*
 sample/*
+<<<<<<< HEAD
 codegen/phxrpc_pb2client
 codegen/phxrpc_pb2server
 codegen/phxrpc_pb2service
@@ -16,3 +20,6 @@ codegen/phxrpc_pb2tool
 codegen/test*
 .vscode/*
 build/*
+=======
+
+>>>>>>> tenms

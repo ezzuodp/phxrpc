@@ -1,10 +1,12 @@
 #--------------------------------------------------------------------
 
-where-am-i = $(abspath $(word $(words $(MAKEFILE_LIST)),$(MAKEFILE_LIST)))
+#debug = y
+
+where-am-i = $(abspath $(word $(words $(MAKEFILE_LIST)), $(MAKEFILE_LIST)))
 
 #$(warning $(dir $(call where-am-i)))
 
-PHXRPC_ROOT=$(dir $(call where-am-i))
+PHXRPC_ROOT = $(dir $(call where-am-i))
 
 OS := $(shell uname)
 
@@ -16,7 +18,7 @@ PLUGIN_BOOST_LDFLAGS = -Wl,--whole-archive -L$(PHXRPC_ROOT)/lib/ -lphxrpc_plugin
 
 #--------------------------------------------------------------------
 
-ifeq ($(debug),y)
+ifeq ($(debug), y)
 # (1) Debug
 	OPT = -g2
 else
@@ -36,7 +38,7 @@ CXXFLAGS = -std=c++11 -Wall -D_REENTRANT -D_GNU_SOURCE -D_XOPEN_SOURCE -fPIC -m6
 		 -I$(PROTOBUF_ROOT)/include \
 		 -I$(PHXRPC_ROOT)
 
-LDFLAGS = -L$(PROTOBUF_ROOT)/lib/ $(PROTOBUF_ROOT)/lib//x86_64-linux-gnu/libprotobuf.a \
+LDFLAGS = -L$(PROTOBUF_ROOT)/lib/ $(PROTOBUF_ROOT)/lib/x86_64-linux-gnu/libprotobuf.a \
 		  -lstdc++ -lpthread -lm
 
 PBFLAGS = -I $(PROTOBUF_ROOT)/include -I $(PHXRPC_ROOT)
